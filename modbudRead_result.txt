@@ -1,0 +1,231 @@
+Python 3.10.9 (tags/v3.10.9:1dd9be6, Dec  6 2022, 20:01:21) [MSC v.1934 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+============ RESTART: C:\Users\hp\Desktop\FoodCounter\modbudRead.py ============
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\FoodCounter\modbudRead.py", line 26, in <module>
+    response = client.read_holding_registers(
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\client\mixin.py", line 114, in read_holding_registers
+    return self.execute(no_response_expected, pdu_reg.ReadHoldingRegistersRequest(address=address, count=count, dev_id=device_id))
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\client\base.py", line 190, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\transaction\transaction.py", line 128, in sync_execute
+    self.pdu_send(request)
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\transaction\transaction.py", line 208, in pdu_send
+    packet = self.framer.buildFrame(self.trace_pdu(True, pdu))
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\framer\base.py", line 62, in buildFrame
+    data = message.function_code.to_bytes(1,'big') + message.encode()
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\pdu\register_message.py", line 25, in encode
+    self.verifyAddress()
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\pdu\pdu.py", line 57, in verifyAddress
+    raise ValueError(f"0 < address {address} < 65535 !")
+ValueError: 0 < address 266240 < 65535 !
+r=client.read_holding_registers(1000, 2, 1)
+Traceback (most recent call last):
+  File "<pyshell#0>", line 1, in <module>
+    r=client.read_holding_registers(1000, 2, 1)
+TypeError: ModbusClientMixin.read_holding_registers() takes 2 positional arguments but 4 were given
+client.close()
+client = ModbusSerialClient("COM6
+                            
+SyntaxError: incomplete input
+client = ModbusSerialClient(port="COM6", baudrate=9600)
+                            
+r=client.read_holding_registers(1000, 2, 1)
+                            
+Traceback (most recent call last):
+  File "<pyshell#4>", line 1, in <module>
+    r=client.read_holding_registers(1000, 2, 1)
+TypeError: ModbusClientMixin.read_holding_registers() takes 2 positional arguments but 4 were given
+r=client.read_holding_registers(1000, 2)
+                            
+Traceback (most recent call last):
+  File "<pyshell#5>", line 1, in <module>
+    r=client.read_holding_registers(1000, 2)
+TypeError: ModbusClientMixin.read_holding_registers() takes 2 positional arguments but 3 were given
+r=client.read_holding_registers(1000)
+                            
+r
+                            
+<pymodbus.pdu.exceptionresponse.ExceptionResponse object at 0x0000021AA7DD9300>
+r.registers
+                            
+[]
+r=client.read_holding_registers(1000).decode()
+                            
+Traceback (most recent call last):
+  File "<pyshell#9>", line 1, in <module>
+    r=client.read_holding_registers(1000).decode()
+TypeError: ExceptionResponse.decode() missing 1 required positional argument: 'data'
+r=client.read_holding_registers(1000).decode('ascii')
+                            
+Traceback (most recent call last):
+  File "<pyshell#10>", line 1, in <module>
+    r=client.read_holding_registers(1000).decode('ascii')
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\pdu\exceptionresponse.py", line 40, in decode
+    self.exception_code = int(data[0])
+ValueError: invalid literal for int() with base 10: 'a'
+r=client.read_holding_registers(1000,2)
+                            
+Traceback (most recent call last):
+  File "<pyshell#11>", line 1, in <module>
+    r=client.read_holding_registers(1000,2)
+TypeError: ModbusClientMixin.read_holding_registers() takes 2 positional arguments but 3 were given
+r=client.read_holding_registers(address=1000,count=2,device_id=1)
+                            
+r.registers
+                            
+[]
+r=client.read_holding_registers(address=1000,count=10,device_id=1)
+                            
+r.registers
+                            
+[]
+r=client.read_holding_registers(address=1003,count=10,device_id=1)
+                            
+r.registers
+                            
+[]
+r=client.read_holding_registers(address=41003,count=10,device_id=1)
+                            
+r.registers
+                            
+[]
+r=client.read_holding_registers(address=41003,count=10,device_id=2)
+                            
+No response received after 3 retries, continue with next request
+Traceback (most recent call last):
+  File "<pyshell#20>", line 1, in <module>
+    r=client.read_holding_registers(address=41003,count=10,device_id=2)
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\client\mixin.py", line 114, in read_holding_registers
+    return self.execute(no_response_expected, pdu_reg.ReadHoldingRegistersRequest(address=address, count=count, dev_id=device_id))
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\client\base.py", line 190, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\transaction\transaction.py", line 153, in sync_execute
+    raise ModbusIOException(txt)
+pymodbus.exceptions.ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+r=client.read_holding_registers(address=41003,count=10,device_id=1)
+r.registers
+[]
+r=client.read_holding_registers(address=41003,count=10,device_id=1)
+r.registers
+[]
+r=client.read_holding_registers(address=1003,count=10,device_id=1)
+r.registers
+[]
+r=client.read_holding_registers(address=0x1003,count=10,device_id=1)
+r.registers
+[]
+r=client.read_holding_registers(address=0x1003,count=2,device_id=1)
+r.registers
+[63536, 12]
+r=client.read_holding_registers(address=0x1000,count=2,device_id=1)
+r.registers
+[328, 340]
+r=client.read_holding_registers(address=0x1003,count=10,device_id=1)
+r.registers
+[]
+r=client.read_holding_registers(address=0x1003,count=4,device_id=1)
+r.registers
+[63536, 12, 1, 0]
+r=client.read_holding_registers(address=0x1000,count=4,device_id=1)
+r.registers
+[328, 340, 8500, 63536]
+r=client.read_holding_registers(address=0x1000,count=6,device_id=1)
+r.registers
+[328, 340, 8500, 63536, 12, 1]
+r=client.read_holding_registers(address=0x1000,count=10,device_id=1)
+r.registers
+[]
+r=client.read_holding_registers(address=0x1005,count=10,device_id=1)
+r.registers
+[]
+r=client.read_holding_registers(address=0x1005,count=6,device_id=1)
+r.registers
+[1, 0, 200, 200, 800, 120]
+r=client.read_holding_registers(address=0x1010,count=6,device_id=1)
+r.registers
+[0, 0, 1000, 0, 0, 0]
+r=client.read_holding_registers(address=0x1010,count=6,device_id=1).registers
+r=client.read_holding_registers(address=0x1005,count=6,device_id=1)
+r=client.read_holding_registers(address=0x1010,count=6,device_id=1)
+r.registers
+[0, 0, 0, 0, 0, 0]
+r=client.write_register(1001, 50, 1)
+Traceback (most recent call last):
+  File "<pyshell#61>", line 1, in <module>
+    r=client.write_register(1001, 50, 1)
+TypeError: ModbusClientMixin.write_register() takes 3 positional arguments but 4 were given
+r=client.write_register(address=1001, value=50)
+r=client.write_register(address=1001, value=50, id=1)
+Traceback (most recent call last):
+  File "<pyshell#63>", line 1, in <module>
+    r=client.write_register(address=1001, value=50, id=1)
+TypeError: ModbusClientMixin.write_register() got an unexpected keyword argument 'id'
+r=client.write_register(address=1001, value=50, device_id=1)
+r=client.write_register(address=1001, value=[50], device_id=1)
+Traceback (most recent call last):
+  File "<pyshell#65>", line 1, in <module>
+    r=client.write_register(address=1001, value=[50], device_id=1)
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\client\mixin.py", line 171, in write_register
+    return self.execute(no_response_expected, pdu_reg.WriteSingleRegisterRequest(address=address, registers=[value], dev_id=device_id))
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\client\base.py", line 190, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\transaction\transaction.py", line 128, in sync_execute
+    self.pdu_send(request)
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\transaction\transaction.py", line 208, in pdu_send
+    packet = self.framer.buildFrame(self.trace_pdu(True, pdu))
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\framer\base.py", line 62, in buildFrame
+    data = message.function_code.to_bytes(1,'big') + message.encode()
+  File "C:\Users\hp\AppData\Roaming\Python\Python310\site-packages\pymodbus\pdu\register_message.py", line 201, in encode
+    return struct.pack(">HH", self.address, self.registers[0])
+struct.error: required argument is not an integer
+>>> r=client.write_registers(address=1001, value=[50], device_id=1)
+Traceback (most recent call last):
+  File "<pyshell#66>", line 1, in <module>
+    r=client.write_registers(address=1001, value=[50], device_id=1)
+TypeError: ModbusClientMixin.write_registers() got an unexpected keyword argument 'value'
+>>> r=client.write_registers(address=x1001, value=[50], device_id=1)
+Traceback (most recent call last):
+  File "<pyshell#67>", line 1, in <module>
+    r=client.write_registers(address=x1001, value=[50], device_id=1)
+NameError: name 'x1001' is not defined
+>>> Traceback (most recent call last):
+...     r=client.write_registers(address=x1001, value=[50], device_id=1)
+...     
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+>>> 
+>>> r=client.write_registers(address=x1001, value=[50], device_id=1)
+Traceback (most recent call last):
+  File "<pyshell#70>", line 1, in <module>
+    r=client.write_registers(address=x1001, value=[50], device_id=1)
+NameError: name 'x1001' is not defined
+>>> r=client.write_registers(address=0x1001, value=[50], device_id=1)
+Traceback (most recent call last):
+  File "<pyshell#71>", line 1, in <module>
+    r=client.write_registers(address=0x1001, value=[50], device_id=1)
+TypeError: ModbusClientMixin.write_registers() got an unexpected keyword argument 'value'
+>>> r=client.write_register(address=0x1001, value=50, device_id=1)
+>>> r=client.write_register(address=0x1001, value=500, device_id=1)
+>>> r=client.write_register(address=0x1000, value=500, device_id=1)
+>>> r=client.write_register(address=0x1001, value=500, device_id=1)
+>>> r=client.write_register(address=0x1001, value=5000, device_id=1)
+>>> client.close()
+>>> 
+>>> 
+>>> 
+>>> 
